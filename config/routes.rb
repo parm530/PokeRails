@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   root "welcomes#home"
   resources :battles
   resources :user_pokemons
