@@ -8,17 +8,29 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+  <%= content_tag(:div, flash[:error], :id => "flash_error") if flash[:error] %>
+  <%= content_tag(:div, flash[:notice], :id => "flash_notice") if flash[:notice] %>
+  <%= content_tag(:div, flash[:alert], :id => "flash_alert") if flash[:alert] %>
+
   <header class="navbar  navbar-inverse">
       <div class="navbar-class">
         <div class="container">
+
+          <% if user_signed_in? %>
             <img src="https://boost-rankedboost.netdna-ssl.com/wp-content/uploads/2016/07/PokeBall.png" alt="pokeball" style="width:25px;height25px;">
             <%=link_to "Home", root_path %>
+            <img src="https://boost-rankedboost.netdna-ssl.com/wp-content/uploads/2016/07/Great-Ball.png" alt="pokeball" style="width:25px;height25px;">
+            <%=link_to "Log Out", destroy_user_session_path, :method => "delete"%><br><br>
+          <strong>Trainer: </strong><%=current_user.name%>
+          <% else %>
             <img src="https://boost-rankedboost.netdna-ssl.com/wp-content/uploads/2016/07/Great-Ball.png" alt="pokeball" style="width:25px;height25px;">
             <%=link_to "Sign Up", new_user_registration_path%>
             <img src="https://pokemongo.gamepress.gg/sites/default/files/2016-07/GO_Ultra_Ball-small.png" alt="pokeball" style="width:25px;height25px;">
             <%=link_to "Sign In", new_user_session_path %>
             <img src="http://www.pokemonjuicebox.com/assets/img/slider/MasterBall.png" alt="pokeball" style="width:25px;height25px;">
-            <%= link_to("Login with Facebook!", "/auth/facebook") %>
+            <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %>
+          <% end %>
+
         </div>
       </div>
     </header>
