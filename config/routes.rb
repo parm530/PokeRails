@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :welcomes
+  root "welcomes#home"
   resources :battles
   resources :user_pokemons
   resources :pokemons
