@@ -8,6 +8,20 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+  <header class="navbar  navbar-inverse">
+      <div class="navbar-class">
+        <div class="container">
+            <img src="https://boost-rankedboost.netdna-ssl.com/wp-content/uploads/2016/07/PokeBall.png" alt="pokeball" style="width:25px;height25px;">
+            <%=link_to "Home", root_path %>
+            <img src="https://boost-rankedboost.netdna-ssl.com/wp-content/uploads/2016/07/Great-Ball.png" alt="pokeball" style="width:25px;height25px;">
+            <%=link_to "Sign Up", new_user_registration_path%>
+            <img src="https://pokemongo.gamepress.gg/sites/default/files/2016-07/GO_Ultra_Ball-small.png" alt="pokeball" style="width:25px;height25px;">
+            <%=link_to "Sign In", new_user_session_path %>
+            <img src="http://www.pokemonjuicebox.com/assets/img/slider/MasterBall.png" alt="pokeball" style="width:25px;height25px;">
+        </div>
+      </div>
+    </header>
+
   <body>
     <%= yield %>
   </body>
