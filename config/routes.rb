@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
+  resources :users
   root "welcomes#home"
+  get '/auth/facebook/callback' => 'welcomes#create'
   resources :battles
   resources :user_pokemons
   resources :pokemons
