@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
 
+  def index
+    @users = User.all
+  end
+
   def new
     
   end
@@ -17,8 +21,9 @@ class UsersController < ApplicationController
   end
 
   def update
+
     if user_signed_in?
-      current_user = User.update(user_params)
+      current_user.update(user_params)
     end
     redirect_to user_path(current_user)
   end

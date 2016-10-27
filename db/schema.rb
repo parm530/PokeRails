@@ -27,15 +27,6 @@ ActiveRecord::Schema.define(version: 20161026184435) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "trainers", force: :cascade do |t|
-    t.integer  "user_id"
-    t.string   "name"
-    t.integer  "age"
-    t.string   "hometown"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "user_pokemons", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "pokemon_id"
