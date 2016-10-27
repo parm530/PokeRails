@@ -1,4 +1,10 @@
 <% if user_signed_in? %>
+  <% if current_user.name && current_user.age && current_user.hometown %>
+    <li><strong>Name: </strong><%= current_user.name%></li>
+    <li><strong>Age: </strong><%= current_user.age%></li>
+    <li><strong>Hometown: </strong><%= current_user.hometown%></li><br>
+  <% end %>
+
   <%= button_to "Edit Trainer", edit_user_path(current_user), :method => "get" %>
 
   <h3>Current Team:</h3>

@@ -5,7 +5,3 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-
-Trainer.create(name: "Ash", age: 10, hometown: "Pallet Town")
-Trainer.create(name: "Misty", age: 10, hometown: "Cerulean City")
-Trainer.create(name: "Brock", age: 15, hometown: "Pewter City")

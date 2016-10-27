@@ -17,7 +17,17 @@ class UsersController < ApplicationController
   end
 
   def update
-    
+    if user_signed_in?
+      current_user = User.update(user_params)
+    end
+    redirect_to user_path(current_user)
+  end
+
+
+  private
+
+  def user_params
+    params.require(:user).permit(:name, :age, :hometown)
   end
   
 end
