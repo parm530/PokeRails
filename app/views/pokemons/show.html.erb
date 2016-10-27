@@ -1,0 +1,34 @@
+<img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/<%=@pokemon.pid%>.png" style="width:250px;height250px;">
+
+<h3>Ability:</h3>
+<li><%= @pokemon.ability %></li>
+
+<h3>Move Set:</h3>
+<ol>
+  <li>
+    <%= @pokemon.move1%>
+  </li>
+  <li>
+    <%= @pokemon.move2%>
+  </li>
+  <li>
+    <%= @pokemon.move3%>
+  </li>
+  <li>
+    <%= @pokemon.move4%>
+  </li>
+</ol>
+
+<h3>PKMN Stats:</h3>
+<ol>
+  <li>
+    <strong>Att: </strong><%= @pokemon.attack%>
+  </li>
+  <li>
+    <strong>Def: </strong><%= @pokemon.defense%>
+  </li>
+  <li>
+    <strong>Spd: </strong>:<%= @pokemon.speed%>
+  </li>
+
+</ol>

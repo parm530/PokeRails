@@ -10,25 +10,45 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161026140900) do
+ActiveRecord::Schema.define(version: 20161026184435) do
 
-  create_table "battles", force: :cascade do |t|
+  create_table "pokemons", force: :cascade do |t|
+    t.integer  "pid"
+    t.string   "name"
+    t.string   "ability"
+    t.string   "move1"
+    t.string   "move2"
+    t.string   "move3"
+    t.string   "move4"
+    t.integer  "attack"
+    t.integer  "defense"
+    t.integer  "speed"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "pokemons", force: :cascade do |t|
+  create_table "trainers", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.integer  "age"
+    t.string   "hometown"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "user_pokemons", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "pokemon_id"
+    t.boolean  "evolution"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
+    t.integer  "age"
+    t.string   "type"
+    t.string   "hometown"
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"

@@ -1,0 +1,17 @@
+<% if user_signed_in? %>
+  <%= button_to "Edit Trainer", edit_user_path(current_user), :method => "get" %>
+
+  <h3>Current Team:</h3>
+  <%= button_to "Catch a Pokemon", new_pokemon_path, :method => "get" %><br>
+
+    <ol>
+  <% current_user.pokemons.each do |pkmn| %>
+      <li>
+        <%= link_to pkmn.name, user_pokemon_path(current_user, pkmn) %><br>
+        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/<%=pkmn.pid%>.png" style="width:150px;height150px;">
+        <%= button_to "Release this PKMN", pokemon_path(pkmn), method: :delete, data: { confirm: "Are you sure?" }%>
+        <br>
+      </li>
+    <% end %>
+    </ol>
+  <% end %>
