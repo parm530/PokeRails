@@ -1,0 +1,3 @@
+class PartyPokemonsController < ApplicationController
+
+end

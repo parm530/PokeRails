@@ -1,7 +1,7 @@
 <h1>List of all Pokemon Trainers</h1>
 
 <% @users.each do |user| %>
-  <ol>
+  <ul>
     <li><%= link_to user.name, user_path(user) %></li>
-  </ol>
+  </ul>
 <% end %>

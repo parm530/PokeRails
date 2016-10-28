@@ -1,0 +1,17 @@
+<h1>Form a New Team</h1>
+
+<%= form_for @party do |f| %>
+  <%= f.label :name_of_party %>
+  <%= f.text_field :name %><br><br>
+
+  <%= f.fields_for :party_pokemons, @party.party_pokemons.build do |party_pokemon_fields| %>
+    <% current_user.pokemons.each do |pkmn| %>
+      <%= pkmn.name %>'s
+      <%= party_pokemon_fields.label :nature %>
+      <%= party_pokemon_fields.text_field :nature %><br><br>
+    <% end %>
+  <% end %>
+  <%= f.submit %>
+<% end %>
+
+

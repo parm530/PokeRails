@@ -6,6 +6,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
       t.integer :age
       t.string :type
       t.string :hometown
+      t.integer :amount, default: 1000
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
 

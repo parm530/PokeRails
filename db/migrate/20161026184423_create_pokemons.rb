@@ -11,6 +11,7 @@ class CreatePokemons < ActiveRecord::Migration[5.0]
       t.integer :attack
       t.integer :defense
       t.integer :speed
+
       t.timestamps
     end
   end

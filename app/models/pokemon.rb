@@ -1,4 +1,6 @@
 class Pokemon < ApplicationRecord
+  has_many :party_pokemons
+  has_many :parties, through: :party_pokemons
   has_many :user_pokemons
   has_many :users, through: :user_pokemons
 

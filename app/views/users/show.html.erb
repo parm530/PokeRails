@@ -1,23 +1,29 @@
-<% if user_signed_in? %>
-  <% if current_user.name && current_user.age && current_user.hometown %>
-    <li><strong>Name: </strong><%= current_user.name%></li>
-    <li><strong>Age: </strong><%= current_user.age%></li>
-    <li><strong>Hometown: </strong><%= current_user.hometown%></li><br>
-  <% end %>
+<% if @user.name && @user.age && @user.hometown %>
+  <li><strong>Name: </strong><%= @user.name%></li>
+  <li><strong>Age: </strong><%= @user.age%></li>
+  <li><strong>Hometown: </strong><%= @user.hometown%></li>
+  <li><strong>Amount: $</strong><%= @user.amount%></li><br>
+<% end %>
 
-  <%= button_to "Edit Trainer", edit_user_path(current_user), :method => "get" %>
-
-  <h3>Current Team:</h3>
+<% if user_signed_in? && current_user == @user %>
+  <%= button_to "Edit Trainer", edit_user_path(@user), :method => "get" %><br>
   <%= button_to "Catch a Pokemon", new_pokemon_path, :method => "get" %><br>
+  <%= button_to "Create a New Party", new_user_party_path(@user), :method => "get" %><br>
+  <h3>Current Team:</h3>
+<% end %>
 
-    <ol>
-  <% current_user.pokemons.each do |pkmn| %>
-      <li>
-        <%= link_to pkmn.name, user_pokemon_path(current_user, pkmn) %><br>
-        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/<%=pkmn.pid%>.png" style="width:150px;height150px;">
+<% if @user != current_user %>
+  <i><%= @user.name %>'s PKMN</i><br>
+<% end %>
+
+<ol>
+  <% @user.pokemons.each do |pkmn| %>
+    <li>
+      <%= link_to pkmn.name, user_pokemon_path(@user, pkmn) %><br>
+      <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/<%=pkmn.pid%>.png" style="width:150px;height150px;">
+      <% if user_signed_in? && current_user == @user%>
         <%= button_to "Release this PKMN", pokemon_path(pkmn), method: :delete, data: { confirm: "Are you sure?" }%>
-        <br>
-      </li>
-    <% end %>
-    </ol>
+      <% end %><br>
+    </li>
   <% end %>
+</ol>

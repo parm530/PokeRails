@@ -3,7 +3,7 @@ class CreateUserPokemons < ActiveRecord::Migration[5.0]
     create_table :user_pokemons do |t|
       t.integer :user_id
       t.integer :pokemon_id
-      t.boolean :evolution
+
       t.timestamps
     end
   end
