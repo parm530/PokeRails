@@ -12,11 +12,20 @@ class Pokemon < ApplicationRecord
   end
 
   def self.random_move_number
-    Array.new(4) {rand(1..25) }.uniq
+    Array.new(6) {rand(1..20) }.uniq
   end
 
-  def self.create_pokemon(user)
-    poke_hash = Pokemon.catch_pokemon
+  def self.pkmn_find_or_create_by(name_hash)
+    @pokemon = Pokemon.find_by(name: name_hash[:name])
+    if !@pokemon
+      loader = Poke::API::Loader.new("pokemon")      
+      poke_hash = loader.find(name_hash[:name].downcase)
+      @pokemon = Pokemon.create_pokemon(poke_hash)
+    end
+    @pokemon
+  end
+
+  def self.create_pokemon(poke_hash)
     random_num_array = Pokemon.random_move_number
     @pokemon = Pokemon.find_or_create_by(pid: poke_hash["national_id"], name: poke_hash["name"], 
       ability: poke_hash["abilities"][0]["name"].capitalize, 
@@ -27,7 +36,6 @@ class Pokemon < ApplicationRecord
       attack: poke_hash["attack"], 
       defense: poke_hash["defense"], 
       speed: poke_hash["speed"])
-    user.caught_pokemons << @pokemon
     @pokemon
   end
 

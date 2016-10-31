@@ -23,7 +23,6 @@ ActiveRecord::Schema.define(version: 20161028180038) do
     t.integer  "party_id"
     t.integer  "pokemon_id"
     t.string   "nature"
-    t.string   "item"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

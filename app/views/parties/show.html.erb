@@ -1,0 +1,37 @@
+<h1><%= @party.name %></h1>
+
+<% @party.pokemons.each do |pkmn| %>
+  <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/<%=pkmn.pid%>.png" style="width:250px;height250px;">
+
+  <h3>Ability:</h3>
+  <li><%= pkmn.ability %></li>
+
+  <h3>Move Set:</h3>
+  <ol>
+    <li>
+      <%= pkmn.move1%>
+    </li>
+    <li>
+      <%= pkmn.move2%>
+    </li>
+    <li>
+      <%= pkmn.move3%>
+    </li>
+    <li>
+      <%= pkmn.move4%>
+    </li>
+  </ol>
+
+  <h3>PKMN Stats:</h3>
+  <ol>
+    <li>
+      <strong>Att: </strong><%= pkmn.attack%>
+    </li>
+    <li>
+      <strong>Def: </strong><%= pkmn.defense%>
+    </li>
+    <li>
+      <strong>Spd: </strong><%= pkmn.speed%>
+    </li>
+  </ol>
+<% end %>

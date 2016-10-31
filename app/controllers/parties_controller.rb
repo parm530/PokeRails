@@ -1,5 +1,10 @@
 class PartiesController < ApplicationController
 
+  def index
+    @user = User.find(params[:user_id])
+    @user_parties = @user.parties
+  end
+
   def new
     @party = Party.new
     @party.party_pokemons.build()
@@ -8,19 +13,19 @@ class PartiesController < ApplicationController
   end
 
   def create
-    # binding.pry
-    party = Party.create(party_params)
-    redirect_to user_party_path(current_user, party)
+    @party = Party.create(user_id: current_user.id)
+    @party.update(party_params)
+    redirect_to user_party_path(current_user.id, @party)
   end
 
   def show
-    
+    @party = Party.find(params[:id])
   end
 
   private
 
   def party_params
-    params.require(:party).permit(:name, party_pokemons_attributes: [:pokemon_name, :nature])
+    params.require(:party).permit(:user_id, :name, party_pokemons_attributes: [:pokemon_name, :nature])
   end
 
 end

@@ -1,0 +1,9 @@
+<h2>List of <%= @user.name %>'s Parties: </h2>
+
+<ol>
+  <% @user_parties.each do |party| %>
+    <li>
+      <%= link_to party.name, user_party_path(@user, party) %>
+      <% end %>
+    </li>
+</ol>

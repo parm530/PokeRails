@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks"}
   resources :users do
     resources :pokemons, only: [:show] 
-    resources :parties, only: [:new, :show]
+    resources :parties, only: [:index, :new, :show]
   end
 
   resources :party_pokemons

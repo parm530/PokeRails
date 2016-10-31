@@ -15,22 +15,18 @@
   </div>
 <% end %>
 
-
 <%= form_for @party do |f| %>
-  <h3><%= f.label :name_of_party %>:
-  <%= f.text_field :name %></h3>
+  <%= f.hidden_field :user_id, :value => current_user.id %>
+    <h3><%= f.label :name_of_party %>:
+    <%= f.text_field :name %></h3>
 
-  <%= f.fields_for :party_pokemons do |party_pokemon_fields| %>
-      <%= party_pokemon_fields.label :pokemon_name %>:
-
-      <%= party_pokemon_fields.text_field :pokemon_name %>
-
-<br><br>
-
-      <%= party_pokemon_fields.label :nature %>: 
-      <%= party_pokemon_fields.text_field :nature %><br><br>
-  <% end %>
-  <%= f.submit %>
+    <%= f.fields_for :party_pokemons do |party_pokemon_fields| %>
+        <%= party_pokemon_fields.label :pokemon_name %>:
+        <%= party_pokemon_fields.text_field :pokemon_name %><br><br>
+        <%= party_pokemon_fields.label :nature %>: 
+        <%= party_pokemon_fields.text_field :nature %><br><br>
+    <% end %>
+    <%= f.submit %>
 <% end %>
 
 

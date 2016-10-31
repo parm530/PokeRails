@@ -4,7 +4,6 @@ class CreatePartyPokemons < ActiveRecord::Migration[5.0]
       t.integer :party_id
       t.integer :pokemon_id
       t.string :nature
-      t.string :item
 
       t.timestamps
     end
