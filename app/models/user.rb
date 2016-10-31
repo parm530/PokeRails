@@ -1,7 +1,10 @@
 class User < ApplicationRecord
   has_many :parties
+  has_many :party_pokemons, through: :parties
+  has_many :pokemons, through: :party_pokemons  
+
   has_many :user_pokemons
-  has_many :pokemons, through: :user_pokemons
+  has_many :caught_pokemons, through: :user_pokemons, source: :pokemon
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

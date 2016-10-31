@@ -17,7 +17,7 @@
 <% end %>
 
 <ol>
-  <% @user.pokemons.each do |pkmn| %>
+  <% @user.caught_pokemons.each do |pkmn| %>
     <li>
       <%= link_to pkmn.name, user_pokemon_path(@user, pkmn) %><br>
       <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/<%=pkmn.pid%>.png" style="width:150px;height150px;">
