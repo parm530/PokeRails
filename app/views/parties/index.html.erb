@@ -1,9 +1,14 @@
-<h2>List of <%= @user.name %>'s Parties: </h2>
-
-<ol>
-  <% @user_parties.each do |party| %>
-    <li>
-      <%= link_to party.name, user_party_path(@user, party) %>
-      <% end %>
-    </li>
-</ol>
+<% if current_user == @user %>
+  <h2>List of <%= @user.name %>'s Parties: </h2>
+  <ol>
+    <% @user_parties.each do |party| %>
+      <li>
+        <p><%= link_to party.name, user_party_path(@user, party) %></p>
+        <%= button_to "Delete this PKMN Party", user_party_path(@user, party), method: :delete, data: { confirm: "Are you sure?" }%>
+        <%= button_to "Edit this PKMN Party", edit_user_party_path(@user, party), method: :get%>
+        <% end %>
+      </li>
+  </ol>
+<% else %>
+  INVALID REQUEST
+<% end %>

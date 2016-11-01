@@ -14,7 +14,7 @@ class PokemonsController < ApplicationController
   end
 
   def show
-
+    @user = User.find(params[:user_id])
   end
 
   def create
@@ -23,6 +23,12 @@ class PokemonsController < ApplicationController
   def destroy
     @pokemon.delete
     redirect_to :back
+  end
+
+  def pokedex
+    @array = Array (1..150)
+    @user = current_user
+    @pokemons = current_user.caught_pokemons.order(:pid)
   end
 
   private

@@ -1,11 +1,15 @@
-<h1>Edit Trainer Info:</h1>
+<% if current_user == @user %>
+  <h1>Edit Trainer Info:</h1>
 
-<%= form_for current_user do |f| %>
-  <p><%= f.label :name %>
-  <%= f.text_field :name %></p>
-  <p><%= f.label :age %>
-  <%= f.number_field :age %></p>
-  <p><%= f.label :hometown %>
-  <%= f.text_field :hometown %></p>
-  <%= f.submit %>
+  <%= form_for current_user do |f| %>
+    <p><%= f.label :name %>
+    <%= f.text_field :name %></p>
+    <p><%= f.label :age %>
+    <%= f.number_field :age %></p>
+    <p><%= f.label :hometown %>
+    <%= f.text_field :hometown %></p>
+    <%= f.submit %>
+  <% end %>
+<% else %>
+  INVALID REQUEST
 <% end %>

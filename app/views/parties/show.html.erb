@@ -3,8 +3,11 @@
 <% @party.pokemons.each do |pkmn| %>
   <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/<%=pkmn.pid%>.png" style="width:250px;height250px;">
 
+  <h3>Nature:</h3>
+  <li><%= pkmn.party_pokemons.find_by(pokemon_id: pkmn.id).nature.capitalize %></li>
   <h3>Ability:</h3>
   <li><%= pkmn.ability %></li>
+
 
   <h3>Move Set:</h3>
   <ol>

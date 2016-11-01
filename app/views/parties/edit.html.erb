@@ -1,0 +1,6 @@
+<% if current_user == @user %>
+  <h1>Edit PKMN Team</h1>
+  <%= render :partial => "form", locals: {party: @party} %>
+<% else %>
+  INVALID REQUEST
+<% end %>

@@ -1,7 +1,9 @@
 class PartiesController < ApplicationController
 
+  before_action :set_party, only: [:show, :edit, :destroy]
+  before_action :set_user, only: [:index, :edit, :new, :destroy]
+
   def index
-    @user = User.find(params[:user_id])
     @user_parties = @user.parties
   end
 
@@ -19,13 +21,33 @@ class PartiesController < ApplicationController
   end
 
   def show
-    @party = Party.find(params[:id])
+  end
+
+  def destroy
+    @party.delete
+    redirect_to :back
+  end
+
+  def edit
+    
+  end
+
+  def update
+    
   end
 
   private
 
   def party_params
     params.require(:party).permit(:user_id, :name, party_pokemons_attributes: [:pokemon_name, :nature])
+  end
+
+  def set_party
+    @party = Party.find(params[:id])
+  end
+
+  def set_user
+    @user = User.find(params[:user_id])
   end
 
 end

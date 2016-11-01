@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
   
   root "welcomes#home"
-
+  get "pokedex", to: "pokemons#pokedex"
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks"}
   resources :users do
-    resources :pokemons, only: [:show] 
-    resources :parties, only: [:index, :new, :show]
+    resources :pokemons, only: [:show, :destroy] 
+    resources :parties, only: [:index, :new, :show, :edit, :destroy]
   end
 
   resources :party_pokemons

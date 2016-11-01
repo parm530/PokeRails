@@ -1,0 +1,10 @@
+<h1>Kanto Region Pokedex</h1>
+
+<% @array.each do |i| %>
+  <% if @pokemons.find_by(pid: i)%>
+    <%= i %>. <%= link_to @pokemons.find_by(pid: i).name, user_pokemon_path(@user, @pokemons.find_by(pid: i)) %>
+<br><br>
+  <% else %>
+    <%= i %>. -- <br><br>
+  <% end %>
+<% end %>

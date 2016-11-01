@@ -4,6 +4,10 @@ class Pokemon < ApplicationRecord
   has_many :user_pokemons
   has_many :users, through: :user_pokemons
 
+  def self.by_types(type)
+    where(types: type)
+  end
+
 
   def self.catch_pokemon
     num = rand(1..150)
@@ -35,8 +39,15 @@ class Pokemon < ApplicationRecord
       move4: poke_hash["moves"][random_num_array[3]]["name"], 
       attack: poke_hash["attack"], 
       defense: poke_hash["defense"], 
-      speed: poke_hash["speed"])
+      speed: poke_hash["speed"],
+      types: types(poke_hash))
     @pokemon
+  end
+
+  def self.types(poke_hash)
+    poke_hash["types"].collect do |type|
+      type["name"].capitalize
+    end.join(", ")
   end
 
 end

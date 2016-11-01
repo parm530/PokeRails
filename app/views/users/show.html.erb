@@ -24,7 +24,7 @@
       <%= link_to pkmn.name, user_pokemon_path(@user, pkmn) %><br>
       <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/<%=pkmn.pid%>.png" style="width:150px;height150px;">
       <% if user_signed_in? && current_user == @user%>
-        <%= button_to "Release this PKMN", pokemon_path(pkmn), method: :delete, data: { confirm: "Are you sure?" }%>
+        <%= button_to "Release this PKMN", user_pokemon_path(@user, pkmn), method: :delete, data: { confirm: "Are you sure?" }%>
       <% end %><br>
     </li>
   <% end %>

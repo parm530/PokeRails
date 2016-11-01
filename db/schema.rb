@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20161028180038) do
     t.integer  "attack"
     t.integer  "defense"
     t.integer  "speed"
+    t.string   "types"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
