@@ -4,10 +4,7 @@ class Pokemon < ApplicationRecord
   has_many :user_pokemons
   has_many :users, through: :user_pokemons
 
-  def self.by_types(type)
-    where(types: type)
-  end
-
+  scope :by_types, -> type {all.select{|pokemon| pokemon.types.include?(type)}}
 
   def self.catch_pokemon
     num = rand(1..150)

@@ -17,20 +17,29 @@
         <div class="container">
 
           <% if user_signed_in? %>
-            <img src="http://orig01.deviantart.net/8048/f/2014/317/b/e/moon_ball_by_oykawoo-d86asqk.png" alt="pokeball" style="width:25px;height25px;">
-            <%= link_to "Pokedex", pokedex_path %>
             <img src="https://boost-rankedboost.netdna-ssl.com/wp-content/uploads/2016/07/PokeBall.png" alt="pokeball" style="width:25px;height25px;">
             <%=link_to "Home", root_path %>
+            <img src="http://orig01.deviantart.net/8048/f/2014/317/b/e/moon_ball_by_oykawoo-d86asqk.png" alt="pokeball" style="width:25px;height25px;">
+            <%= link_to "Pokedex", pokedex_path %>
             <img src="http://vignette4.wikia.nocookie.net/pokemon/images/b/be/Quick_Ball.png/revision/latest?cb=20110615192330" style="width:25px;height25px;">
             <%=link_to "All Trainers", users_path %>
             <img src="http://www.pokemonespace.com/infos/img/pokeballs/14.gif" alt="pokeball" style="width:25px;height25px;">
             <%=link_to "Trainer's Page", user_path(current_user) %>
             <img src=http://itserver.montytech.net/2018/le13454/Assets/TimerBall.png alt="pokeball" style="width:25px;height25px;">
-            <%=link_to "Log Out", destroy_user_session_path, :method => "delete"%><br>
-           <h1>Trainer: <%=current_user.name%></h1>
-          <% else %>
+            <%=link_to "Challenge", new_match_path %>
+            <img src=http://vignette2.wikia.nocookie.net/pokemon/images/0/0d/Love_Ball.png/revision/latest?cb=20110605071610" alt="pokeball" style="width:25px;height25px;">
 
-            
+            <%=link_to "Log Out", destroy_user_session_path, :method => "delete"%><br>
+            <%= form_tag search_by_type_path, :method => 'get' do %>
+  <p>
+    <%= text_field_tag :type, params[:type] %>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
+<% end %>
+           <h1>Trainer: <%=current_user.name%></h1>
+
+
+          <% else %>
             <img src="https://boost-rankedboost.netdna-ssl.com/wp-content/uploads/2016/07/PokeBall.png" alt="pokeball" style="width:25px;height25px;">
             <%=link_to "Home", root_path %>
             <img src="https://boost-rankedboost.netdna-ssl.com/wp-content/uploads/2016/07/Great-Ball.png" alt="pokeball" style="width:25px;height25px;">

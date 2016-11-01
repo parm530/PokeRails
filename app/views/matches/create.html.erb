@@ -1,0 +1,27 @@
+<h1>Match Stats:</h1>
+<%= link_to 'Start a new Battle', :back %>
+
+<h2><%= current_user.name %></h2>
+  <ol>
+<% @team1.each do |pkmn| %>
+    <li>
+      <%= pkmn.name %><br>
+      Attack: <%= pkmn.attack %>
+    </li>
+    <% end %>
+  </ol>
+
+<h1>VS</h1>
+
+<h2><%= @user2.name %></h2>
+  <ol>
+    <% @team2.each do |pkmn| %>
+      <li>
+        <%= pkmn.name %><br>
+        Attack: <%= pkmn.attack %>
+      </li>
+      <% end %>
+  </ol>
+
+
+<h1><%= @match.status %></h1>

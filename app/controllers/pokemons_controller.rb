@@ -17,6 +17,10 @@ class PokemonsController < ApplicationController
     @user = User.find(params[:user_id])
   end
 
+  def index
+    @pokemons = Pokemon.all
+  end
+
   def create
   end
 
@@ -29,6 +33,11 @@ class PokemonsController < ApplicationController
     @array = Array (1..150)
     @user = current_user
     @pokemons = current_user.caught_pokemons.order(:pid)
+  end
+
+  def select_type
+    @pokemons = Pokemon.by_types(params[:type].capitalize)
+    render 'index'
   end
 
   private

@@ -6,6 +6,8 @@ class User < ApplicationRecord
   has_many :user_pokemons
   has_many :caught_pokemons, through: :user_pokemons, source: :pokemon
 
+ 
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,

@@ -1,0 +1,8 @@
+<ol>
+  <% @pokemons.each do |pkmn| %>
+  <li>
+    <%=link_to pkmn.name, user_pokemon_path(current_user, pkmn) %>
+  <% end %>
+  </li>
+  
+</ol>

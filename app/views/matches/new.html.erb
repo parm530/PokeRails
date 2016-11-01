@@ -1,0 +1,12 @@
+<h1>New Match</h1>
+
+<%= form_for @match do |f| %>
+  <%= f.hidden_field :user1_id, :value => current_user.id %>  
+  <%= f.hidden_field :status, :value => nil %>  
+
+  <%= f.label :select_trainer %>
+  <%= f.collection_select :user2_id, User.all, :id, :name, prompt: true %><br><br>
+  <%= f.label :select_team_size %>
+  <%= f.number_field :team_size, within: 1..6 %><br><br>
+  <%= f.submit %>
+<% end %>
