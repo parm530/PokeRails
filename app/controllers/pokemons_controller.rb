@@ -33,11 +33,6 @@ class PokemonsController < ApplicationController
     redirect_to :back
   end
 
-  def pokedex
-    @array = Array (1..150)
-    @user = current_user
-    @pokemons = current_user.caught_pokemons.order(:pid)
-  end
 
   private
 
