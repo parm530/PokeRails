@@ -4,8 +4,8 @@ class Pokemon < ApplicationRecord
   has_many :user_pokemons
   has_many :users, through: :user_pokemons
 
-  scope :by_types, -> type {all.select{|pokemon| pokemon.types.include?(type)}}
-
+  scope :by_types, -> type {all.select{|pokemon| pokemon.types.include?(type)}} 
+  
   def self.catch_pokemon
     num = rand(1..150)
     loader = Poke::API::Loader.new("pokemon")

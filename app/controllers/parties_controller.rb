@@ -17,12 +17,17 @@ class PartiesController < ApplicationController
   def create
     # @party = Party.create(user_id: current_user.id)
     # @party.update(party_params)
-    @party = Party.new(party_params)
-    if @party.valid?
-      @party.save
-      redirect_to user_party_path(current_user.id, @party)
-    else
-      render :new
+    @user = User.find_by(id: params[:party][:user_id])
+    if current_user == @user
+      @party = Party.new(party_params)
+        binding.pry
+      if @party.valid?
+        @party.save
+        redirect_to user_party_path(current_user.id, @party)
+      else
+        # binding.pry
+        render :new
+      end
     end
   end
 

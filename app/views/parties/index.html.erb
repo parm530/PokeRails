@@ -1,4 +1,4 @@
-<% if current_user == @user %>
+<%# if current_user == @user %>
   <h2>List of <%= @user.name %>'s Parties: </h2>
   <ol>
     <% @user_parties.each do |party| %>
@@ -9,6 +9,6 @@
         <% end %>
       </li>
   </ol>
-<% else %>
-  INVALID REQUEST
-<% end %>
+<%# else %>
+  <!-- INVALID REQUEST -->
+<%# end %>

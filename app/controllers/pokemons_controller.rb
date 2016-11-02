@@ -39,15 +39,6 @@ class PokemonsController < ApplicationController
     @pokemons = current_user.caught_pokemons.order(:pid)
   end
 
-  def select_type
-    @pokemons = Pokemon.by_types(params[:type].capitalize)
-    if @pokemons == []
-      redirect_to root_path, :alert => "Invalid search query!"
-    else
-      render 'index'
-    end
-  end
-
   private
 
   def set_pokemon
@@ -61,6 +52,5 @@ class PokemonsController < ApplicationController
   def set_user_pokemon
     @pkmn = current_user.caught_pokemons.find(params[:id])
   end
-
 
 end

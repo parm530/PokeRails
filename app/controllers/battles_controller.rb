@@ -1,2 +1,0 @@
-class BattlesController < ApplicationController
-end
