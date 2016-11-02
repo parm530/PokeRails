@@ -1,6 +1,8 @@
 class PokemonsController < ApplicationController
 
   before_action :set_pokemon, only: [:show, :destroy]
+  before_action :set_user, only: [:show, :destroy]
+  before_action :set_user_pokemon, only: [:destroy]
 
   def new
     if user_signed_in?
@@ -14,7 +16,7 @@ class PokemonsController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:user_id])
+
   end
 
   def index
@@ -25,7 +27,9 @@ class PokemonsController < ApplicationController
   end
 
   def destroy
-    @pokemon.delete
+    # @pokemon.delete
+    @pkmn.delete
+
     redirect_to :back
   end
 
@@ -37,13 +41,25 @@ class PokemonsController < ApplicationController
 
   def select_type
     @pokemons = Pokemon.by_types(params[:type].capitalize)
-    render 'index'
+    if @pokemons == []
+      redirect_to root_path, :alert => "Invalid search query!"
+    else
+      render 'index'
+    end
   end
 
   private
 
   def set_pokemon
     @pokemon = Pokemon.find(params[:id])
+  end
+
+  def set_user
+    @user = User.find_by(id: params[:user_id])
+  end
+
+  def set_user_pokemon
+    @pkmn = current_user.caught_pokemons.find(params[:id])
   end
 
 

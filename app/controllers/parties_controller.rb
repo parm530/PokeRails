@@ -15,9 +15,15 @@ class PartiesController < ApplicationController
   end
 
   def create
-    @party = Party.create(user_id: current_user.id)
-    @party.update(party_params)
-    redirect_to user_party_path(current_user.id, @party)
+    # @party = Party.create(user_id: current_user.id)
+    # @party.update(party_params)
+    @party = Party.new(party_params)
+    if @party.valid?
+      @party.save
+      redirect_to user_party_path(current_user.id, @party)
+    else
+      render :new
+    end
   end
 
   def show

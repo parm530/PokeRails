@@ -2,9 +2,9 @@
 
 <% @array.each do |i| %>
   <% if @pokemons.find_by(pid: i)%>
-    <%= i %>. <%= link_to @pokemons.find_by(pid: i).name, user_pokemon_path(@user, @pokemons.find_by(pid: i)) %>
-<br><br>
+    <h3><%= i %>. <%= link_to @pokemons.find_by(pid: i).name, @pokemons.find_by(pid: i) %></h3>
+
   <% else %>
-    <%= i %>. -- <br><br>
+    <h3><%= i %>. -- </h3>
   <% end %>
 <% end %>

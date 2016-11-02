@@ -31,13 +31,10 @@
 
             <%=link_to "Log Out", destroy_user_session_path, :method => "delete"%><br>
             <%= form_tag search_by_type_path, :method => 'get' do %>
-  <p>
-    <%= text_field_tag :type, params[:type] %>
-    <%= submit_tag "Search", :name => nil %>
-  </p>
-<% end %>
+              <p> <%= text_field_tag :type, params[:type] %>
+                  <%= submit_tag "Search", :name => nil %></p>
+            <% end %>
            <h1>Trainer: <%=current_user.name%></h1>
-
 
           <% else %>
             <img src="https://boost-rankedboost.netdna-ssl.com/wp-content/uploads/2016/07/PokeBall.png" alt="pokeball" style="width:25px;height25px;">

@@ -3,6 +3,8 @@ class Party < ApplicationRecord
   has_many :party_pokemons
   has_many :pokemons, through: :party_pokemons
 
+  validates :name, presence: true
+
   def party_pokemons_attributes=(party_pokemons_attributes)
     party_pokemons_attributes.values.each do |pkmn_info|
       pokemon = Pokemon.pkmn_find_or_create_by(name: pkmn_info[:pokemon_name])
