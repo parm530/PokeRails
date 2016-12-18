@@ -20,7 +20,7 @@ class PartiesController < ApplicationController
     @user = User.find_by(id: params[:party][:user_id])
     if current_user == @user
       @party = Party.new(party_params)
-        binding.pry
+        # binding.pry
       if @party.valid?
         @party.save
         redirect_to user_party_path(current_user.id, @party)

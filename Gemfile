@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+
+gem 'figaro'
+gem 'pusher'
 gem "poke-api" # Ruby wrapper for Poke-API 
 gem 'devise'
 gem 'omniauth-facebook'
