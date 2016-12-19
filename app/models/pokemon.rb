@@ -7,7 +7,7 @@ class Pokemon < ApplicationRecord
   scope :by_types, -> type {all.select{|pokemon| pokemon.types.include?(type)}} 
   
   def self.catch_pokemon
-    num = rand(1..300)
+    num = rand(1..386)
     loader = Poke::API::Loader.new("pokemon")
     pokemon = loader.find(num)
   end

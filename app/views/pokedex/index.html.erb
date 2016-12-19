@@ -1,9 +1,9 @@
-<h1>Kanto Region Pokedex</h1>
+<h1>Kanto/Johto/Hoenn Region Pokedex</h1>
 
 <% @array.each do |i| %>
   <% if @pokemons.find_by(pid: i)%>
     <% if current_user.caught_pokemons.include?(@pokemons.find_by(pid: i)) %>
-      <h3><%= i %>. <%= link_to @pokemons.find_by(pid: i).name, @pokemons.find_by(pid: i) %> <img src="https://boost-rankedboost.netdna-ssl.com/wp-content/uploads/2016/07/PokeBall.png" alt="pokeball" style="width:25px;height25px;"> </h3>
+      <h3><%= i %>. <%= link_to @pokemons.find_by(pid: i).name, @pokemons.find_by(pid: i) %> <img src="/assets/pokeball.png" alt="pokeball" style="width:25px;height25px;"> </h3>
       <% else %>
         <h3><%= i %>. <%= link_to @pokemons.find_by(pid: i).name, @pokemons.find_by(pid: i) %></h3>
       <% end %>
