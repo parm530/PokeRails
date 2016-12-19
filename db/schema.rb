@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161101052138) do
+ActiveRecord::Schema.define(version: 20161219162917) do
 
   create_table "battles", force: :cascade do |t|
     t.integer  "prize"
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 20161101052138) do
     t.string   "types"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "image_link"
   end
 
   create_table "user_pokemons", force: :cascade do |t|

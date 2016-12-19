@@ -28,17 +28,24 @@ class Pokemon < ApplicationRecord
 
   def self.create_pokemon(poke_hash)
     if poke_hash["moves"].size <= 5
-      @pokemon = Pokemon.find_or_create_by(pid: poke_hash["national_id"], name: poke_hash["name"], 
+      @pokemon = Pokemon.find_or_create_by(
+        pid: poke_hash["national_id"], 
+        name: poke_hash["name"],
+        image_link: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/#{poke_hash["national_id"]}.png", 
         ability: poke_hash["abilities"][0]["name"].capitalize, 
         move1: poke_hash["moves"][0]["name"], 
         move2: poke_hash["moves"][1]["name"],  
         attack: poke_hash["attack"], 
         defense: poke_hash["defense"], 
         speed: poke_hash["speed"],
-        types: types(poke_hash))
+        types: types(poke_hash)
+      )
     else
       random = Pokemon.random_num_array(poke_hash["moves"].size)
-      @pokemon = Pokemon.find_or_create_by(pid: poke_hash["national_id"], name: poke_hash["name"], 
+      @pokemon = Pokemon.find_or_create_by(
+        pid: poke_hash["national_id"], 
+        name: poke_hash["name"],
+        image_link: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/#{poke_hash["national_id"]}.png", 
         ability: poke_hash["abilities"][0]["name"].capitalize, 
         move1: poke_hash["moves"][random[0]]["name"], 
         move2: poke_hash["moves"][random[1]]["name"], 
@@ -47,7 +54,8 @@ class Pokemon < ApplicationRecord
         attack: poke_hash["attack"], 
         defense: poke_hash["defense"], 
         speed: poke_hash["speed"],
-        types: types(poke_hash))
+        types: types(poke_hash)
+      )
     end
     @pokemon
   end

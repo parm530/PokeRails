@@ -1,31 +1,32 @@
-<% if @user.name && @user.age && @user.hometown %>
-  <li><strong>Name: </strong><%= @user.name%></li>
-  <li><strong>Age: </strong><%= @user.age%></li>
-  <li><strong>Hometown: </strong><%= @user.hometown%></li>
-  <li><strong>Amount: $</strong><%= @user.amount%></li><br>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div id="trainer" class="col-md-4">
+      <% if @user.name && @user.age && @user.hometown %>
+        <h3><strong>Name: </strong><%= @user.name%></h3>
+        <h4><strong>Age: </strong><%= @user.age%><br></h4>
+        <h4><strong>Hometown: </strong><%= @user.hometown%><br></h4>
+        <h4><strong>Amount: $</strong><%= @user.amount%><br></h4>
+        <%= button_to "Catch a Pokemon", new_pokemon_path, :method => "get", class: "btn btn-primary"%><br>
+      <% end %>
+    </div>
 
-<% if user_signed_in? && current_user == @user %>
-  <%= button_to "Edit Trainer", edit_user_path(@user), :method => "get" %><br>
-  <%= button_to "Catch a Pokemon", new_pokemon_path, :method => "get" %><br>
-  <%= button_to "Create a New Party", new_user_party_path(@user), :method => "get" %><br>
+    <div class="col-md-4">
+      <% if @user != current_user %>
+        <i><%= @user.name %>'s PKMN</i><br>
+      <% end %>
+      <ol>
+        <% @user.caught_pokemons.each do |pkmn| %>
+          <h2><li>
+            <%= link_to pkmn.name, user_pokemon_path(@user, pkmn) %><br>
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/<%=pkmn.pid%>.png" style="width:150px;height150px;"></h2>
+            <% if user_signed_in? && current_user == @user%>
+              <%= button_to "Release this PKMN", user_pokemon_path(@user, pkmn), class: "btn btn-danger", method: :delete, data: { confirm: "Are you sure?" }%>
+            <% end %><br>
+          </li>
+        <% end %>
+      </ol>
+    </div>
 
-  <%= button_to "List of your Party", user_parties_path(@user), :method => "get" %>
-  <h3>Current Team:</h3>
-<% end %>
+  </div>
+</div>
 
-<% if @user != current_user %>
-  <i><%= @user.name %>'s PKMN</i><br>
-<% end %>
-
-<ol>
-  <% @user.caught_pokemons.each do |pkmn| %>
-    <li>
-      <%= link_to pkmn.name, user_pokemon_path(@user, pkmn) %><br>
-      <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/<%=pkmn.pid%>.png" style="width:150px;height150px;">
-      <% if user_signed_in? && current_user == @user%>
-        <%= button_to "Release this PKMN", user_pokemon_path(@user, pkmn), method: :delete, data: { confirm: "Are you sure?" }%>
-      <% end %><br>
-    </li>
-  <% end %>
-</ol>

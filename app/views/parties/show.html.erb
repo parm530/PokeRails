@@ -1,40 +1,120 @@
-<h1><%= @party.name %></h1>
+<div class="container">
+  <div class="row">
+      <h1><%= @party.name %></h1>
 
-<% @party.pokemons.each do |pkmn| %>
-  <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/<%=pkmn.pid%>.png" style="width:250px;height250px;">
+    <div class="col-md-4">
+      <h1><%= @party.pokemons[0].name %></h1>
+      <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/<%=@party.pokemons[0].pid%>.png" style="width:200px;height:200px;">
+      <h3>Nature:</h3>
+      <li><%= @party.pokemons[0].party_pokemons.find_by(pokemon_id: @party.pokemons[0].id).nature.capitalize %></li>
+      <h3>Ability:</h3>
+      <li><%= @party.pokemons[0].ability %></li>
+      <h3>Move Set:</h3>
+      <ol>
+        <li>
+          <%= @party.pokemons[0].move1%>
+        </li>
+        <li>
+          <%= @party.pokemons[0].move2%>
+        </li>
+        <li>
+          <%= @party.pokemons[0].move3%>
+        </li>
+        <li>
+          <%= @party.pokemons[0].move4%>
+        </li>
+      </ol>
+      <h3>PKMN Stats:</h3>
+      <ol>
+        <li>
+          <strong>Att: </strong><%= @party.pokemons[0].attack%>
+        </li>
+        <li>
+          <strong>Def: </strong><%= @party.pokemons[0].defense%>
+        </li>
+        <li>
+          <strong>Spd: </strong><%= @party.pokemons[0].speed%>
+        </li>
+      </ol>
+    </div>
 
-  <h3>Nature:</h3>
-  <li><%= pkmn.party_pokemons.find_by(pokemon_id: pkmn.id).nature.capitalize %></li>
-  <h3>Ability:</h3>
-  <li><%= pkmn.ability %></li>
+    <div class="col-md-4">
+      <h1><%= @party.pokemons[1].name %></h1>
+      <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/<%=@party.pokemons[1].pid%>.png" style="width:200px;height:200px;">
+      <h3>Nature:</h3>
+      <li><%= @party.pokemons[1].party_pokemons.find_by(pokemon_id: @party.pokemons[1].id).nature.capitalize %></li>
+      <h3>Ability:</h3>
+      <li><%= @party.pokemons[1].ability %></li>
+      <h3>Move Set:</h3>
+      <ol>
+        <li>
+          <%= @party.pokemons[1].move1%>
+        </li>
+        <li>
+          <%= @party.pokemons[1].move2%>
+        </li>
+        <li>
+          <%= @party.pokemons[1].move3%>
+        </li>
+        <li>
+          <%= @party.pokemons[1].move4%>
+        </li>
+      </ol>
+      <h3>PKMN Stats:</h3>
+      <ol>
+        <li>
+          <strong>Att: </strong><%= @party.pokemons[1].attack%>
+        </li>
+        <li>
+          <strong>Def: </strong><%= @party.pokemons[1].defense%>
+        </li>
+        <li>
+          <strong>Spd: </strong><%= @party.pokemons[1].speed%>
+        </li>
+      </ol>
+    </div>
+
+    <div class="col-md-4">
+      <h1><%= @party.pokemons[2].name %></h1>
+      <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/<%=@party.pokemons[2].pid%>.png" style="width:200px;height:200px;">
+      <h3>Nature:</h3>
+      <li><%= @party.pokemons[2].party_pokemons.find_by(pokemon_id: @party.pokemons[2].id).nature.capitalize %></li>
+      <h3>Ability:</h3>
+      <li><%= @party.pokemons[2].ability %></li>
+      <h3>Move Set:</h3>
+      <ol>
+        <li>
+          <%= @party.pokemons[2].move1%>
+        </li>
+        <li>
+          <%= @party.pokemons[2].move2%>
+        </li>
+        <li>
+          <%= @party.pokemons[2].move3%>
+        </li>
+        <li>
+          <%= @party.pokemons[2].move4%>
+        </li>
+      </ol>
+      <h3>PKMN Stats:</h3>
+      <ol>
+        <li>
+          <strong>Att: </strong><%= @party.pokemons[2].attack%>
+        </li>
+        <li>
+          <strong>Def: </strong><%= @party.pokemons[2].defense%>
+        </li>
+        <li>
+          <strong>Spd: </strong><%= @party.pokemons[2].speed%>
+        </li>
+      </ol>
+    </div>
+
+    
+
+  </div>
+</div>
 
 
-  <h3>Move Set:</h3>
-  <ol>
-    <li>
-      <%= pkmn.move1%>
-    </li>
-    <li>
-      <%= pkmn.move2%>
-    </li>
-    <li>
-      <%= pkmn.move3%>
-    </li>
-    <li>
-      <%= pkmn.move4%>
-    </li>
-  </ol>
 
-  <h3>PKMN Stats:</h3>
-  <ol>
-    <li>
-      <strong>Att: </strong><%= pkmn.attack%>
-    </li>
-    <li>
-      <strong>Def: </strong><%= pkmn.defense%>
-    </li>
-    <li>
-      <strong>Spd: </strong><%= pkmn.speed%>
-    </li>
-  </ol>
-<% end %>
+

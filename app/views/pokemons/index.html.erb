@@ -1,8 +1,22 @@
-<ol>
-  <% @pokemons.each do |pkmn| %>
-  <li>
-    <%=link_to pkmn.name, pkmn %>
-  <% end %>
-  </li>
-  
-</ol>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-2">
+    </div>
+
+    <div class="col-lg-8">
+      <ol>
+      <h2>Search results for "<i><%=@type%></i>":</h2>
+        <% @pokemons.each do |pkmn| %>
+        <h1><li>
+          <%=link_to pkmn.name, pkmn %>
+        <% end %>
+        </li></h1>
+      </ol>
+    </div>
+
+    <div class="col-lg-2">
+      
+    </div>
+
+  </div>
+</div>

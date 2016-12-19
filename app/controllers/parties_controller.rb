@@ -31,9 +31,14 @@ class PartiesController < ApplicationController
     end
   end
 
+
   def show
   end
 
+  def update
+    render :show
+  end
+  
   def destroy
     @party.delete
     redirect_to :back

@@ -1,13 +1,32 @@
-<h1>Kanto/Johto/Hoenn Region Pokedex</h1>
+<div class="container">
+  <div class="row">
 
-<% @array.each do |i| %>
-  <% if @pokemons.find_by(pid: i)%>
-    <% if current_user.caught_pokemons.include?(@pokemons.find_by(pid: i)) %>
-      <h3><%= i %>. <%= link_to @pokemons.find_by(pid: i).name, @pokemons.find_by(pid: i) %> <img src="/assets/pokeball.png" alt="pokeball" style="width:25px;height25px;"> </h3>
-      <% else %>
-        <h3><%= i %>. <%= link_to @pokemons.find_by(pid: i).name, @pokemons.find_by(pid: i) %></h3>
+    <div class="col-sm-2">
+    </div>
+
+    <div class="col-lg-8">
+      <h1>Kanto/Johto/Hoenn Region Pokedex</h1>
+
+      <% @array.each do |i| %>
+        <% if @pokemons.find_by(pid: i)%>
+          <% if current_user.caught_pokemons.include?(@pokemons.find_by(pid: i)) %>
+            <h3><%= i %>. <%= link_to @pokemons.find_by(pid: i).name, @pokemons.find_by(pid: i) %>
+            <img src="/assets/pokeball.png" alt="pokeball" style="width:25px;height25px;">
+            <br> <img src="<%= @pokemons.find_by(pid: i).image_link %>" style="width:200px;height200px;">
+             </h3><br><br>
+            <% else %>
+              <h3><%= i %>. <%= link_to @pokemons.find_by(pid: i).name, @pokemons.find_by(pid: i) %>
+              <br> <img src="<%= @pokemons.find_by(pid: i).image_link %>" style="width:200px;height200px;">
+              </h3>
+            <% end %>
+        <% else %>
+          <h3><%= i %>. -- </h3>
+        <% end %>
       <% end %>
-  <% else %>
-    <h3><%= i %>. -- </h3>
-  <% end %>
-<% end %>
+    </div>
+
+    <div class="col-sm-2">
+    </div>
+
+  </div>
+</div>
