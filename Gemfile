@@ -1,8 +1,7 @@
 source 'https://rubygems.org'
 
-
+gem 'active_model_serializers'
 gem 'figaro'
-gem 'pusher'
 gem "poke-api" # Ruby wrapper for Poke-API 
 gem 'devise'
 gem 'omniauth-facebook'

@@ -17,17 +17,17 @@
         <div class="container">
 
           <% if user_signed_in? %>
-            <img src="https://boost-rankedboost.netdna-ssl.com/wp-content/uploads/2016/07/PokeBall.png" alt="pokeball" style="width:25px;height25px;">
+            <img src="/assets/pokeball.png" style="width:25px;height25px;">
             <%=link_to "Home", root_path %>
-            <img src="http://orig01.deviantart.net/8048/f/2014/317/b/e/moon_ball_by_oykawoo-d86asqk.png" alt="pokeball" style="width:25px;height25px;">
+            <img src="/assets/moonball.png" style="width:25px;height25px;">
             <%= link_to "Pokedex", pokedex_path %>
-            <img src="http://vignette4.wikia.nocookie.net/pokemon/images/b/be/Quick_Ball.png/revision/latest?cb=20110615192330" style="width:25px;height25px;">
-            <%=link_to "All Trainers", users_path %>
-            <img src="http://www.pokemonespace.com/infos/img/pokeballs/14.gif" alt="pokeball" style="width:25px;height25px;">
-            <%=link_to "Trainer's Page", user_path(current_user) %>
-            <img src=http://itserver.montytech.net/2018/le13454/Assets/TimerBall.png alt="pokeball" style="width:25px;height25px;">
+            <img src="/assets/quickball.png" style="width:25px;height25px;">
+            <%=link_to "All Trainers", users_path, id: "all-trainers" %>
+            <img src="/assets/netball.gif" alt="pokeball" style="width:25px;height25px;">
+            <%=link_to "Trainer's Page", user_path(current_user), method: :get %>
+            <img src="/assets/timerball.png" alt="pokeball" style="width:25px;height25px;">
             <%=link_to "Challenge", new_match_path %>
-            <img src=http://vignette2.wikia.nocookie.net/pokemon/images/0/0d/Love_Ball.png/revision/latest?cb=20110605071610" alt="pokeball" style="width:25px;height25px;">
+            <img src="/assets/loveball.png" alt="pokeball" style="width:25px;height25px;">
 
             <%=link_to "Log Out", destroy_user_session_path, :method => "delete"%><br>
             <%= form_tag new_search_path, :method => 'get' do %>
@@ -37,13 +37,13 @@
            <h1>Trainer: <%=current_user.name%></h1>
 
           <% else %>
-            <img src="https://boost-rankedboost.netdna-ssl.com/wp-content/uploads/2016/07/PokeBall.png" alt="pokeball" style="width:25px;height25px;">
+            <img src="/assets/pokeball.png" alt="pokeball" style="width:25px;height25px;">
             <%=link_to "Home", root_path %>
-            <img src="https://boost-rankedboost.netdna-ssl.com/wp-content/uploads/2016/07/Great-Ball.png" alt="pokeball" style="width:25px;height25px;">
+            <img src="/assets/greatball.png" style="width:25px;height25px;">
             <%=link_to "Sign Up", new_user_registration_path%>
-            <img src="https://pokemongo.gamepress.gg/sites/default/files/2016-07/GO_Ultra_Ball-small.png" alt="pokeball" style="width:25px;height25px;">
+            <img src="/assets/ultraball.png" style="width:25px;height25px;">
             <%=link_to "Sign In", new_user_session_path %>
-            <img src="http://www.pokemonjuicebox.com/assets/img/slider/MasterBall.png" alt="pokeball" style="width:25px;height25px;">
+            <img src="/assets/masterball.png" alt="pokeball" style="width:25px;height25px;">
             <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %>
           <% end %>
 

@@ -27,9 +27,9 @@ class PokemonsController < ApplicationController
   end
 
   def destroy
-    # @pokemon.delete
-    @pkmn.delete
-
+    temp = []
+    temp << @pkmn
+    current_user.caught_pokemons -= temp
     redirect_to :back
   end
 
