@@ -1,9 +1,12 @@
 <div class="container">
   <div class="row">
-    <div class="col-lg-2">
-      
+    <div class="col-lg-4">
+      <% num = rand(1..6) %>
+      <img src="/assets/trainers/<%=num%>.png" style="width:300px;height:500px;">
     </div>
-    <div class="col-lg-8">
+
+    
+    <div class="col-lg-6">
       <% if current_user == @user %>
         <h1>Edit Trainer Info:</h1>
 
@@ -21,9 +24,11 @@
       <% end %>
 
     </div>
-    <div class="col-lg-2">
 
+    <div class="col-lg-2">
+      
     </div>
+
   </div>
 </div>
 

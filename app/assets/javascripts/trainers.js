@@ -11,13 +11,20 @@ $(function() {
 
     $.get('/users.json', function(data) {
       var string = '<div class="container"><div class="row"><div class="col-lg-4">';
+
       $.each(data, function(index, value) {
-        var name = value.name;
-        string += "<h4><li>" + name + "</li></h4>";
+        var trainer = new Trainer(value);
+
+        // var name = value.name;
+        string += trainer.trainerName();
 
       });
-      string += "</div></div></div>"
-        $(trainerDiv).html(string);
+      string += "</div></div></div>";
+
+      var str = new Trainer("Parm");
+      str.append(trainerDiv, string);
+
+        // $(trainerDiv).html(string);
 
         $("#train").append(trainerDiv);
 
@@ -26,3 +33,4 @@ $(function() {
   });
 
 });
+

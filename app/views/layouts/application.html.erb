@@ -50,7 +50,6 @@
             <input type="text" name="type" class="form-control" placeholder="Search by type">
           </div>
           <button type="submit" class="btn btn-warning">Submit</button>
-          <% end %>
         </form>
 
         <ul class="nav navbar-nav navbar-right">
@@ -59,12 +58,15 @@
               Trainer Options
               <span class="caret"></span>
             </button>
+          <% end %>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+              <% if current_user %>
               <li><%= link_to "Edit Trainer", edit_user_path(current_user), :method => "get" %></li>
               <li><%= link_to "Create a Pokemon Party", new_user_party_path(current_user), :method => "get" %></li>
               <li><%= link_to "List of Pokemon Parties", user_parties_path(current_user), :method => "get" %></li>
               <li><%=link_to "Log Out", destroy_user_session_path, :method => "delete"%></li>
             </ul>
+            <% end %>
           </div>
           
         </ul>
