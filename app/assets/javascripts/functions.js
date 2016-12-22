@@ -29,31 +29,45 @@ $(function() {
     var infoDiv = document.createElement("div");
     $(infoDiv).attr("class", "infoDiv");
     $.get("/pokemons/" + id + ".json", function(data) {
-      var string = "<br><br><br><h4>Type(s): " + data["types"] + "</h4>";
-      string += "<h4>Ability: " + data["ability"] + "</h4>";
-      string += "<h4>Attack: " + data["attack"] + "</h4>";
-      string += "<h4>Defense: " + data["defense"] + "</h4>";
-      string += "<h4>Speed: " + data["speed"] + "</h4>";
-    $(infoDiv).html(string);
-    $(`#${data.id}`).append(infoDiv);
 
+      pkmn = new Pokemon(data);
+      var stats = pkmn.stats();
+      $(infoDiv).html(stats);
+      $(`#${data.id}`).append(infoDiv);
     });
   });
 
-  $("#train").on('click', function(event) {
+  $("#train .btn").on('click', function(event) {
     event.preventDefault();
     $("#trainers").empty()
-    $.get('/users', function(data) {
-      var string = '<div class="container"><div class="row"><div class="col-lg-4">';
+    $.get('/users' + '.json', function(data) {
+      var string = '<div class="container"><div class="row"><div class="col-lg-12">';
       $.each(data, function(index, value) {
         var trainer = new Trainer(value);
         string += trainer.trainerName();
       });
       string += "</div></div></div>";
-      var str = new Trainer("Parm");
-      str.append($("#trainers"), string);
+      var trainer = new Trainer("Parm");
+      trainer.append($("#trainers"), string);
 
     });
 
   });
+
+  $("#train").on('click', 'li.trainer-li', function() {
+    var id = this.id;
+    $.get('/users/' + id + '/caught_pokemon', function(data) {
+      var name = data.name;
+      var num = data.caught_pokemons.length;
+      var string = " has caught: " + num + " pokemons!"
+      $(`#${id}`).append(string);
+    });
+    // get /users/:id/caught_pokemons
+    // make call to rails with the id, maybe we'll need a new route/ controller action
+
+    // take that response, and append some new info about that specific trainer to the page
+    // ex: number of caught pokemon
+  });
+
+
 });

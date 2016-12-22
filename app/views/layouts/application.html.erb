@@ -44,12 +44,12 @@
           <% end %>
 
         </ul>
+          <% if user_signed_in? %>
         <form class="navbar-form navbar-left" action="/searches/new" method="get">
           <div class="form-group">
-          <% if user_signed_in? %>
             <input type="text" name="type" class="form-control" placeholder="Search by type">
           </div>
-          <button type="submit" class="btn btn-warning">Submit</button>
+          <button type="submit" class="btn btn-warning">Search</button>
         </form>
 
         <ul class="nav navbar-nav navbar-right">

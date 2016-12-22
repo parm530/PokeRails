@@ -1,4 +1,5 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :name
+  attributes :name, :id
   has_many :parties
+  has_many :caught_pokemons
 end
