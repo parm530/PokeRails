@@ -1,2 +1,23 @@
-<h1>New PKMN Team</h1>
-<%= render :partial => "form", locals: {party: @party} %>
+<div class="container">
+  <div class="row">
+    <div id="party" class="col-md-3">
+      <!-- <img src="/assets/red.png" style="width:300px;height:600px;"> -->
+      <br><br>
+      <%= button_to "List of Pokemon Parties", user_parties_path(current_user),  :method => "get", class: "btn btn-primary pink", id: "#{ current_user.id}" %>
+
+    </div>
+
+    <div class="col-md-6">
+      <h1>New PKMN Team</h1>
+      <%= render :partial => "form", locals: {party: @party} %>
+    </div>
+
+    <div id="new-team" class="col-md-3">
+
+    </div>
+
+  </div>
+</div>
+
+
+

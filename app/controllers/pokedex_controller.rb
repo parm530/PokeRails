@@ -1,9 +1,8 @@
 class PokedexController < ApplicationController
 
   def index
-    @array = Array (1..150)
-    @user = current_user
-    @pokemons = current_user.caught_pokemons.order(:pid)
+    @array = Array (1..386)
+    @pokemons = Pokemon.all.order(:pid)
   end
 
 end

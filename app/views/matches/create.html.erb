@@ -1,27 +1,37 @@
-<h1>Match Stats:</h1>
-<%= link_to 'Start a new Battle', :back %>
+<div class="container">
+  <%= button_to 'Start a new Battle', :back, class: "btn btn-primary" %>
+  <h1>Match Stats:</h1>
 
-<h2><%= current_user.name %></h2>
-  <ol>
-<% @team1.each do |pkmn| %>
-    <li>
-      <%= pkmn.name %><br>
-      Attack: <%= pkmn.attack %>
-    </li>
-    <% end %>
-  </ol>
+  <div class="row">
+  
+      <div class="col-lg-4">
+        <h2><%= current_user.name %></h2>
+          <ol>
+            <% @team1.each do |pkmn| %>
+              <h3><li>
+                <%= pkmn.name %><br>
+                <i>Attack: <%= pkmn.attack %></i>
+              </li></h3>
+            <% end %>
+          </ol>
+    </div>
 
-<h1>VS</h1>
+    <div class="col-lg-4">
+      <h1><img src="/assets/vs.png"></h1>
+    </div>
 
-<h2><%= @user2.name %></h2>
-  <ol>
-    <% @team2.each do |pkmn| %>
-      <li>
-        <%= pkmn.name %><br>
-        Attack: <%= pkmn.attack %>
-      </li>
-      <% end %>
-  </ol>
+    <div class="col-lg-4">
+      <h2><%= @user2.name %></h2>
+        <ol>
+          <% @team2.each do |pkmn| %>
+            <h3><li>
+              <%= pkmn.name %><br>
+              <i>Attack: <%= pkmn.attack %></i>
+            </li></h3>
+            <% end %>
+        </ol>
+    </div>
 
-
-<h1><%= @match.status %></h1>
+  </div>
+    <h1><i><%= @match.status %></i></h1>
+</div>

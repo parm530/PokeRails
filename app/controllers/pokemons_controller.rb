@@ -16,7 +16,10 @@ class PokemonsController < ApplicationController
   end
 
   def show
-
+    respond_to do |format|
+      format.html { render :show }
+      format.json { render json: @pokemon }
+    end
   end
 
   def index
@@ -27,9 +30,9 @@ class PokemonsController < ApplicationController
   end
 
   def destroy
-    # @pokemon.delete
-    @pkmn.delete
-
+    temp = []
+    temp << @pkmn
+    current_user.caught_pokemons -= temp
     redirect_to :back
   end
 

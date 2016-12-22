@@ -1,6 +1,15 @@
-<% if current_user == @user %>
-  <h1>Edit PKMN Team</h1>
-  <%= render :partial => "form", locals: {party: @party} %>
-<% else %>
-  INVALID REQUEST
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-4">
+      <img src="/assets/lance.png" style="width:350px;height:550px;">
+    </div>
+    <div class="col-lg-4">
+      <h1>Edit PKMN Team</h1>
+      <%= render :partial => "form", locals: {party: @party} %>
+    </div>
+    <div class="col-lg-4">
+      
+    </div>
+
+  </div>
+</div>

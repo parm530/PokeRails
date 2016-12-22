@@ -25,5 +25,24 @@
         <%= party_pokemon_fields.label :nature %>: 
         <%= party_pokemon_fields.text_field :nature %><br><br>
     <% end %>
-    <%= f.submit %>
+    <%= f.submit class: "btn btn-primary" %>
 <% end %>
+
+
+<script type="text/javascript">
+  $(function() {
+    $('form').submit(function(event) {
+      event.preventDefault();
+      var values = $(this).serialize();
+      var posting = $.post('/parties', values)
+      posting.done(function(data) {
+        var string = "<br><h1>New Team</h1><ul>";
+        data.pokemons.forEach(function(pkmn) {
+          string += "<li><h4>" + pkmn.name + "</h4></li>";
+        });
+        $("#new-team").append(string);
+      });
+
+    });
+  });
+</script>

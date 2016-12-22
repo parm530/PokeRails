@@ -3,6 +3,10 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
+    respond_to do |format|
+      format.html { render :index }
+      format.json { render json: @users }
+    end
   end
 
   def new
@@ -14,7 +18,11 @@ class UsersController < ApplicationController
   end
 
   def show
-    
+    # binding.pry
+    respond_to do |format|
+      format.html { render :show }
+      format.json { render json: @user }
+    end
   end
 
   def edit
@@ -28,6 +36,11 @@ class UsersController < ApplicationController
     redirect_to user_path(current_user)
   end
 
+  def caught_pokemon
+    @user = User.find_by(id: params[:user_id])
+    render json: @user
+    # binding.pry
+  end
 
   private
 

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get "pokedex", to: "pokedex#index"
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks"}
   resources :users do
+    get 'caught_pokemon', to: "users#caught_pokemon"
     resources :pokemons, only: [:show, :destroy] 
     resources :parties, only: [:index, :new, :show, :edit, :destroy]
   end

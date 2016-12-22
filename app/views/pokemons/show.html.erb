@@ -1,41 +1,60 @@
-<% if current_user == @user %>
-  <%= button_to "Catch a Pokemon", new_pokemon_path, :method => "get" %>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-2">
+      <% if current_user == @user %>
+        <%= button_to "Catch a Pokemon", new_pokemon_path, :method => "get", class: "btn btn-primary" %>
+      <% end %>
+      <h1><%= @pokemon.name %></h1>
+    </div>
+    <div class="col-sm-4">
 
-<img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/<%=@pokemon.pid%>.png" style="width:250px;height250px;">
+      <img src="<%=@pokemon.image_link%>" style="width:250px;height250px;">
 
-<h3>Ability:</h3>
-<li><%= @pokemon.ability %></li>
+      <h3>Ability:</h3>
+      <h4><li><%= @pokemon.ability %></li></h4>
 
-<h3>Types:</h3>
-<li><%= @pokemon.types %></li>
+      <h3>Caught On:</h3>
+      <h4><li><%= @pokemon.created_at.strftime("%a, %B %d, %Y at %I:%M %p") %></li></h4>
+    
+    </div>
+    <div class="col-md-4">
 
-<h3>Move Set:</h3>
-<ol>
-  <li>
-    <%= @pokemon.move1%>
-  </li>
-  <li>
-    <%= @pokemon.move2%>
-  </li>
-  <li>
-    <%= @pokemon.move3%>
-  </li>
-  <li>
-    <%= @pokemon.move4%>
-  </li>
-</ol>
 
-<h3>PKMN Stats:</h3>
-<ol>
-  <li>
-    <strong>Att: </strong><%= @pokemon.attack%>
-  </li>
-  <li>
-    <strong>Def: </strong><%= @pokemon.defense%>
-  </li>
-  <li>
-    <strong>Spd: </strong><%= @pokemon.speed%>
-  </li>
+      <h3>Type(s):</h3>
+      <h4><li><%= @pokemon.types %></li></h4>
 
-</ol>
+      <h3>Move Set:</h3>
+      <ol>
+        <h4><li>
+          <%= @pokemon.move1%>
+        </li></h4>
+        <h4><li>
+          <%= @pokemon.move2%>
+        </li></h4>
+        <h4><li>
+          <%= @pokemon.move3%>
+        </li></h4>
+        <h4><li>
+          <%= @pokemon.move4%>
+        </li></h4>
+      </ol>
+
+      <h3>PKMN Stats:</h3>
+      <ol>
+        <h4><li>
+          <strong>Att: </strong><%= @pokemon.attack%>
+        </li></h4>
+        <h4><li>
+          <strong>Def: </strong><%= @pokemon.defense%>
+        </li></h4>
+        <h4><li>
+          <strong>Spd: </strong><%= @pokemon.speed%>
+        </li></h4>
+
+      </ol>
+    </div>
+  </div>
+</div>
+
+
+
