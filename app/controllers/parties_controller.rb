@@ -12,16 +12,15 @@ class PartiesController < ApplicationController
 
   def new
     @party = Party.new
-    @party.party_pokemons.build()
-    @party.party_pokemons.build()
-    @party.party_pokemons.build()
   end
 
   def create
+    binding.pry
     # @party = Party.create(user_id: current_user.id)
     # @party.update(party_params)
-    @user = User.find_by(id: params[:party][:user_id])
-    if current_user == @user
+    # @user = User.find_by(id: params[:party][:user_id])
+    @user = current_user
+    # if current_user == @user
       @party = Party.new(party_params)
       if @party.valid?
         @party.save
@@ -52,6 +51,7 @@ class PartiesController < ApplicationController
   private
 
   def party_params
+    #left off here figure out how to pass numbers to ppa
     params.require(:party).permit(:user_id, :name, party_pokemons_attributes: [:pokemon_name, :nature])
   end
 
@@ -60,7 +60,9 @@ class PartiesController < ApplicationController
   end
 
   def set_user
-    @user = User.find(params[:user_id])
+    # @user = User.find(params[:user_id])
+    @user = current_user
+
   end
 
 end

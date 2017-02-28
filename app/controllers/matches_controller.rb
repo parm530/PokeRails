@@ -5,11 +5,6 @@ class MatchesController < ApplicationController
   end
 
   def create
-    # @match = Match.create(match_params)
-    # @team1 = @match.build_team1
-    # @team2 = @match.build_team2
-    # @match.battle(team1, team2)
-
     amount = params[:match][:team_size].to_i
     @team1 = current_user.caught_pokemons.sample(amount)
     @user2 = User.find_by(id: params[:match][:user2_id])

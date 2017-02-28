@@ -3,3 +3,4 @@ class UserSerializer < ActiveModel::Serializer
   has_many :parties
   has_many :caught_pokemons
 end
+

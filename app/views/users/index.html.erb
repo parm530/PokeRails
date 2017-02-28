@@ -9,7 +9,7 @@
 
       <% @users.each do |user| %>
         <ul>
-          <h4><img src="assets/pokeball.png" height="42" width="42"><%= link_to user.name, user_path(user) %></h4>
+          <h4><img src="assets/pokeball.png" height="42" width="42"><%= link_to user.first_name, user_path(user) %></h4>
         </ul>
       <% end %>
       

@@ -41,6 +41,7 @@ $(function() {
     event.preventDefault();
     $("#trainers").empty()
     $.get('/users' + '.json', function(data) {
+      debugger;
       var string = '<div class="container"><div class="row"><div class="col-lg-12">';
       $.each(data, function(index, value) {
         var trainer = new Trainer(value);

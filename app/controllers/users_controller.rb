@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update]
+  before_filter :authenticate_user!
 
   def index
     @users = User.all
@@ -18,7 +19,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    # binding.pry
     respond_to do |format|
       format.html { render :show }
       format.json { render json: @user }
@@ -26,30 +26,30 @@ class UsersController < ApplicationController
   end
 
   def edit
-    
+    if(current_user == @user)
+      render :edit
+    else
+      redirect_to user_path(current_user)
+    end
   end
 
   def update
-    if user_signed_in? && current_user == @user
-      current_user.update(user_params)
-    end
+    current_user.update(user_params)
     redirect_to user_path(current_user)
   end
 
   def caught_pokemon
-    @user = User.find_by(id: params[:user_id])
     render json: @user
-    # binding.pry
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:name, :age, :hometown)
+    params.require(:user).permit(:first_name, :last_name, :age, :hometown)
   end
 
   def set_user
-    @user = User.find_by(id: params[:id])
+    @user = User.find(params[:id])
   end
   
 end

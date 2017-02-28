@@ -18,12 +18,12 @@
   <%= f.hidden_field :user_id, :value => current_user.id %>
     <h3><%= f.label :name_of_party %>:
     <%= f.text_field :name %></h3>
-
-    <%= f.fields_for :party_pokemons do |party_pokemon_fields| %>
-        <%= party_pokemon_fields.label :pokemon_name %>:
-        <%= party_pokemon_fields.text_field :pokemon_name %><br><br>
-        <%= party_pokemon_fields.label :nature %>: 
-        <%= party_pokemon_fields.text_field :nature %><br><br>
+    <h4><%= f.collection_check_boxes :user, current_user.caught_pokemons, :id, :name  do |b| %></h4>
+      <%= b.check_box %>
+      <%= b.label do %>
+        <%= b.object.name %>
+      <% end %>
+    <br />
     <% end %>
     <%= f.submit class: "btn btn-primary" %>
 <% end %>
