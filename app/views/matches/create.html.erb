@@ -1,16 +1,20 @@
 <div class="container">
-  <%= button_to 'Start a new Battle', :back, class: "btn btn-primary" %>
+  <%= button_to 'New Battle', new_match_path, class: "btn btn-primary", :method => "get" %>
   <h1>Match Stats:</h1>
 
   <div class="row">
+    <h1><i><%= @match.status %></i></h1>
+  </div>
+
+  <div class="row">
   
-      <div class="col-lg-4">
-        <h2><%= current_user.name %></h2>
+      <div id="<%=current_user.id%>" class="col-lg-4">
+        <h2><%= current_user.first_name %></h2>
           <ol>
             <% @team1.each do |pkmn| %>
               <h3><li>
                 <%= pkmn.name %><br>
-                <i>Attack: <%= pkmn.attack %></i>
+                <img src="<%=pkmn.image_link%>" style="width:150px;height150px;">
               </li></h3>
             <% end %>
           </ol>
@@ -20,18 +24,17 @@
       <h1><img src="/assets/vs.png"></h1>
     </div>
 
-    <div class="col-lg-4">
-      <h2><%= @user2.name %></h2>
+    <div id="<%=@user2.id%>" class="col-lg-4">
+      <h2><%= @user2.first_name %></h2>
         <ol>
           <% @team2.each do |pkmn| %>
             <h3><li>
               <%= pkmn.name %><br>
-              <i>Attack: <%= pkmn.attack %></i>
+              <img src="<%=pkmn.image_link%>" style="width:150px;height150px;">
             </li></h3>
             <% end %>
         </ol>
     </div>
 
   </div>
-    <h1><i><%= @match.status %></i></h1>
 </div>

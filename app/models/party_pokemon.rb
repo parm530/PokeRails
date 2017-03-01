@@ -1,7 +1,6 @@
 class PartyPokemon < ApplicationRecord
   belongs_to :party
   belongs_to :pokemon
-  validates :nature, presence: true
 
   def pokemon_name=(name)
     if name != ""

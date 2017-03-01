@@ -42,38 +42,34 @@
             <li><%=link_to "Sign In", new_user_session_path %></li>
             <li><%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %></li>
           <% end %>
-
         </ul>
-          <% if user_signed_in? %>
-        <form class="navbar-form navbar-left" action="/searches/new" method="get">
-          <div class="form-group">
-            <input type="text" name="type" class="form-control" placeholder="Search by type">
-          </div>
-          <button type="submit" class="btn btn-warning">Search</button>
-        </form>
 
-        <ul class="nav navbar-nav navbar-right">
-          <div class="dropdown">
-            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-              Trainer Options
-              <span class="caret"></span>
-            </button>
-          <% end %>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-              <% if current_user %>
-              <li><%= link_to "Edit Trainer", edit_user_path(current_user), :method => "get" %></li>
-              <li><%= link_to "Create a Pokemon Party", new_user_party_path(current_user), :method => "get" %></li>
-              <li><%= link_to "List of Pokemon Parties", user_parties_path(current_user), :method => "get" %></li>
-              <li><%=link_to "Log Out", destroy_user_session_path, :method => "delete"%></li>
-            </ul>
-            <% end %>
-          </div>
-          
-        </ul>
-      </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
-  </nav>
+        <% if user_signed_in? %>
+          <form class="navbar-form navbar-left" action="/searches/new" method="get">
+            <div class="form-group">
+              <input type="text" name="type" class="form-control" placeholder="Search by type">
+            </div>
+            <button type="submit" class="btn btn-warning">Search</button>
+          </form>
 
+          <ul class="nav navbar-nav navbar-right">
+            <div class="dropdown">
+              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                Trainer Options
+                <span class="caret"></span>
+              </button>
+        
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                <li><%= link_to "Edit Trainer", edit_user_path(current_user), :method => "get" %></li>
+                <li><%= link_to "Edit Party", edit_party_path(current_user), :method => "get" %></li>
+                <li><%=link_to "Log Out", destroy_user_session_path, :method => "delete"%></li>
+                </ul>
+            </div>
+          </ul>
+        <% end %>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
   <body>
     <%= yield %>
   </body>

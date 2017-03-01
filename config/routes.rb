@@ -10,7 +10,6 @@ Rails.application.routes.draw do
   end
 
   resources :searches
-  resources :battles
   resources :matches
   resources :party_pokemons
   resources :parties, except: [:new, :show]

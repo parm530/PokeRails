@@ -5,10 +5,13 @@ class Match < ApplicationRecord
   # end
 
   def self.battle(team1, team2)
-    Array(0..team1.size-1).collect do |x|
-      if team1[x].attack > team2[x].attack
-        "Team1"
-      else
+    range = (0..5)
+    array = range.to_a
+    array.collect do |index|
+      if team1[index].speed > team2[index].speed
+        if team1[index].attack > team2[index].attack
+          "Team1"
+        end
         "Team2"
       end
     end

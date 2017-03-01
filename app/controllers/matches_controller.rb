@@ -5,18 +5,19 @@ class MatchesController < ApplicationController
   end
 
   def create
-    amount = params[:match][:team_size].to_i
-    @team1 = current_user.caught_pokemons.sample(amount)
+    @team1 = current_user.party.pokemons
     @user2 = User.find_by(id: params[:match][:user2_id])
-    @team2 = @user2.caught_pokemons.sample(amount)
-    if @team1.size == amount && @team2.size == amount 
+    @team2 = @user2.party.pokemons
+
+    if(@team1.size == @team2.size) 
       results_array = Match.battle(@team1, @team2)
-      freq = results_array.inject(Hash.new(0)) { |h,v| h[v] += 1; h }
-      winner = results_array.max_by { |v| freq[v] }
+
+      frequency = results_array.inject(Hash.new(0)) { |h,v| h[v] += 1; h }
+      winner = results_array.max_by { |v| frequency[v] }
       if winner == "Team1"
-        params[:match][:status] = "#{current_user.name} is the winner!"
+        params[:match][:status] = "#{current_user.first_name} is the winner!"
       else
-        params[:match][:status] = "#{@user2.name} is the winner!"
+        params[:match][:status] = "#{@user2.first_name} is the winner!"
       end
         @match = Match.create(match_params)
         render :create

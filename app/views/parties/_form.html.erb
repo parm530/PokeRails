@@ -18,7 +18,7 @@
   <%= f.hidden_field :user_id, :value => current_user.id %>
     <h3><%= f.label :name_of_party %>:
     <%= f.text_field :name %></h3>
-    <h4><%= f.collection_check_boxes :user, current_user.caught_pokemons, :id, :name  do |b| %></h4>
+    <h4><%= f.collection_check_boxes :pokemon_ids, current_user.caught_pokemons, :id, :name  do |b| %></h4>
       <%= b.check_box %>
       <%= b.label do %>
         <%= b.object.name %>
@@ -29,7 +29,7 @@
 <% end %>
 
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
   $(function() {
     $('form').submit(function(event) {
       event.preventDefault();
@@ -45,4 +45,4 @@
 
     });
   });
-</script>
+</script> -->

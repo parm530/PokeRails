@@ -13,9 +13,7 @@
         <%= f.hidden_field :status, :value => nil %>  
 
         <%= f.label :select_trainer %>
-        <%= f.collection_select :user2_id, User.all, :id, :name, prompt: true %><br><br>
-        <%= f.label :select_team_size %>
-        <%= f.number_field :team_size, within: 1..6 %><br><br>
+        <%= f.collection_select :user2_id, User.all-[current_user], :id, :first_name, prompt: true %><br><br>
         <%= f.submit class: "btn btn-primary"%>
       <% end %>
 
