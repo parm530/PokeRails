@@ -1,9 +1,5 @@
 class Match < ApplicationRecord
-
-  # def build_team(trainer)
-  #   trainer.caught_pokemons.sample(self.team_size)
-  # end
-
+  
   def self.battle(team1, team2)
     range = (0..5)
     array = range.to_a

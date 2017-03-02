@@ -1,6 +1,6 @@
 <div class="container" id="purple" value="pink">
   <div class="row">
-    <div id="trainer" class="col-md-4">
+    <div id="trainer" class="col-md-3">
         <h3><strong>Name: </strong><%= @user.first_name%> <%= @user.last_name %></h3>
         <h4><strong>Age: </strong><%= @user.age%><br></h4>
         <h4><strong>Hometown: </strong><%= @user.hometown%><br></h4>
@@ -9,27 +9,25 @@
         <% end %>
     </div>
 
-    <div class="col-md-4">
-      <% if current_user == @user %>
+    <div class="col-md-6">
+      <% if current_user == @user %>      
         <% if @user.party && @user.party.pokemons %>
           <h1>Party: <%= link_to @user.party.name, user_party_path(@user) %></h1>
-            <ol>
           <% @user.party.pokemons.each do |pkmn| %>
-            <h2><li>
-              <%= link_to pkmn.name, user_pokemon_path(@user, pkmn) %><br>
-              <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/<%=pkmn.pid%>.png" style="width:150px;height150px;"></h2></li>
+              <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/<%=pkmn.pid%>.png" style="width:80px;height80px;">
           <% end %>
-        </ol>
         <%= button_to "Edit Party", edit_user_party_path(current_user), class: "btn btn-danger", :method => "get"%>
-        <% else %>
+        <% elsif (current_user.caught_pokemons.length >= 6) %>
           <h1><%= link_to "Create a Pokemon Party", new_user_party_path(current_user), :method => "get" %></h1> 
+        <% else %>
+          <h1><%= link_to "Catch a Pokemon", new_pokemon_path, :method => "get" %><h1>
         <% end %>
       <% else %>
         <h1>Private Team</h1>
       <% end %>
     </div>
 
-    <div class="col-md-4">
+    <div class="col-md-3">
       <h1>POKEMON BOX</h1>
       <% if @user != current_user %>
         <i><%= @user.first_name %>'s PKMN</i><br>
