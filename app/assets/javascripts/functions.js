@@ -37,24 +37,6 @@ $(function() {
     });
   });
 
-  $("#train .btn").on('click', function(event) {
-    event.preventDefault();
-    $("#trainers").empty()
-    $.get('/users' + '.json', function(data) {
-      debugger;
-      var string = '<div class="container"><div class="row"><div class="col-lg-12">';
-      $.each(data, function(index, value) {
-        var trainer = new Trainer(value);
-        string += trainer.trainerName();
-      });
-      string += "</div></div></div>";
-      var trainer = new Trainer("Parm");
-      trainer.append($("#trainers"), string);
-
-    });
-
-  });
-
   $("#train").on('click', 'li.trainer-li', function() {
     var id = this.id;
     $.get('/users/' + id + '/caught_pokemon', function(data) {

@@ -1,5 +1,6 @@
 function Trainer(attr){
-  this.name = attr.name;
+  this.first_name = attr.first_name;
+  this.last_name = attr.last_name;
   this.id = attr.id;
   // this.trainerName = function(){
   //   return "<h4><li>" + this.name + "</li></h4>";
@@ -8,7 +9,7 @@ function Trainer(attr){
 }
 
 Trainer.prototype.trainerName = function(){
-  return '<h4><li class="trainer-li" id="'+ this.id + '">' + this.name + "</li></h4>";
+  return '<h4><li class="trainer-li" id="'+ this.id + '">' + this.first_name + ' ' + this.last_name+ "</li></h4>";
 }
 
 Trainer.prototype.append = function(node, string){
